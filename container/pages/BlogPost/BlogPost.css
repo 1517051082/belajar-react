@@ -1,0 +1,51 @@
+.post{
+    width: 500px;
+    margin: 10px;
+}
+
+.img-thumb{
+    width: 200px;
+}
+
+.img-thumb img{
+    width: 200px !important;
+    height: 150px;
+}
+
+.content{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.title{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.desc{
+    font-size: 15px;
+}
+
+.postTitle{
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.btn-remove{
+    background: tomato;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+
+}
+.btn-update{
+    background: yellow;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.content .title {
+    cursor: pointer;
+    color: cadetblue;
+}
