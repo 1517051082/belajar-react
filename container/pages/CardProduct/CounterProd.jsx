@@ -1,41 +1,34 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import ActionType from "../../../redux/reducer/GlobalActionType";
 
-class CounterProd extends Component{
-    state = {
-        order: 0
-    }
-    
-    handleOnChangeCounter = (newValue) => {
-        this.props.onChangeCounter(newValue)
-    }
-
-    handleMinus = () => {
-        if(this.state.order >0){
-            this.setState({
-                order: this.state.order -1
-            }, () => {
-                this.handleOnChangeCounter(this.state.order)
-            })
-        }
-    }
-
-    handlePlus = () => {
-            this.setState({
-                order: this.state.order + 1
-            }, () => {
-                this.handleOnChangeCounter(this.state.order)
-            })
-    }
-
-    render(){
-        return (
-            <div className="counter">
-                <button className="minus" onClick={this.handleMinus} >-</button>
-                <input className="text-count" type="text" value={this.state.order}/>
-                <button className="plus" onClick={this.handlePlus}>+</button>
-            </div>
-        )
-    }
+class CounterProd extends Component {
+  render() {
+    return (
+      <div className="counter">
+        <button className="minus" onClick={this.props.handleMinus}>
+          -
+        </button>
+        <input className="text-count" type="text" value={this.props.order} />
+        <button className="plus" onClick={this.props.handlePlus}>
+          +
+        </button>
+      </div>
+    );
+  }
 }
 
-export default CounterProd;
+const mapStateToPros = (state) => {
+  return {
+    order: state.totalOrder
+  };
+};
+
+const mapDispatchToOrder = (dispatch) => {
+  return {
+    handlePlus: () => dispatch({ type: ActionType.ADD_ORDER }),
+    handleMinus: () => dispatch({ type: ActionType.MINUS_ORDER })
+  };
+};
+
+export default connect(mapStateToPros, mapDispatchToOrder)(CounterProd);
